@@ -1,0 +1,81 @@
+package com.inspur.ch9;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Ch9Servlet2 extends HttpServlet {
+
+	/**
+	 * Constructor of the object.
+	 */
+	public Ch9Servlet2() {
+		super();
+	}
+
+	/**
+	 * Destruction of the servlet. <br>
+	 */
+	public void destroy() {
+		super.destroy(); // Just puts "destroy" string in log
+		// Put your code here
+	}
+
+	/**
+	 * The doGet method of the servlet. <br>
+	 *
+	 * This method is called when a form has its tag value method equals to get.
+	 * 
+	 * @param request the request send by the client to the server
+	 * @param response the response send by the server to the client
+	 * @throws ServletException if an error occurred
+	 * @throws IOException if an error occurred
+	 */
+	public void doGet(HttpServletRequest request, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		resp.setContentType("text/html;charset=utf-8");
+		PrintWriter out = resp.getWriter();
+		
+		out.print("<html>");
+		out.print("<head><title>用户注册界面</title></head>");
+		out.println("<body><form method='post'>用户名：<input type='text' name='userName'" +
+				"/><br>电子邮件：<input type='text' name='mail'/><br/>" +
+				"<input type='submit' value='确定'/></form></body>");
+		out.print("</html>");
+		out.flush();
+		out.close();
+
+	}
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+		resp.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		PrintWriter out = resp.getWriter();
+		
+		out.print("<html>");
+		out.print("<head><title>用户注册界面</title></head>");
+		out.println("<body>用户名：" +request.getParameter("userName")+
+				"<br>电子邮件：" +request.getParameter("mail")+
+				"</body>");
+		out.print("</html>");
+		out.flush();
+		out.close();
+	}
+
+	/**
+	 * Initialization of the servlet. <br>
+	 *
+	 * @throws ServletException if an error occurs
+	 */
+	public void init() throws ServletException {
+		// Put your code here
+	}
+
+}
